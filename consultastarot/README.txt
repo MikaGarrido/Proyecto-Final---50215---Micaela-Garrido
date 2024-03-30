@@ -25,7 +25,7 @@ varios y todos orientados a los gatos.
 -Consultas: En esta parte se encuentran las consultas realizadas por los clientes y la fecha 
 cuando realizaron la consulta, asi tambien la pregunta que realizaron.  
 
-Pruebas:
+Pruebas: hostlocal/inicio/
 createsuper user:
 
 usuario: garri
