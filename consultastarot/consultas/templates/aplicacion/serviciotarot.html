@@ -1,0 +1,59 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Aca tenemos otras opciones!</h1>   
+{% endblock titulo %}
+
+
+{% block contenido %}
+<h2>Queres una lectura mas detallada? Aca tenemos todas las opciones de tiradas disponibles para vos.</h2>
+
+<table>
+    <tr>
+        <td width="200"><h2>Servicio</h2></td>
+        <td>
+            <a
+            href="{% url 'servicio_create' %}"
+            <i class="fa-solid fa-square-plus"></i>
+            </a>
+        </td>
+    </tr>
+</table> 
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre de Servicio</th>
+            <th>Descripción</th>
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for servicio in servicios %}    
+        <tr>
+            <td>{{ servicio.id }}</td>
+            <td>{{ servicio.nombre }}</td>
+            <td>{{ servicio.descripcion }}</td>
+            <td>
+                <a
+                  href="{% url 'servicio_update' servicio.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-regular fa-pen-to-square" title="Edit Record"></i>
+                </a>  
+                <a
+                href="{% url 'servicio_delete' servicio.id %}"
+                class="btn btn-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa-solid fa-trash" title="Delete Record"></i>
+                </a>  
+            </td>    
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}
+    

@@ -1,0 +1,53 @@
+{% extends "aplicacion/index.html" %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Consulta</h2></td>
+        <td>
+            <a
+            href="{% url 'consulta_create' id_cliente=0 %}"  
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+            </a>
+        </td>        
+    </tr>
+ </table>
+
+ <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Servicio</th>
+            <th>Fecha de consulta</th>
+            <th>Pregunta</th>
+            <th>Indicaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in consulta %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.cliente }}</td>
+            <td>{{ c.servicio }}</td>
+            <td>{{ c.fecha_consulta }}</td>
+            <td>{{ c.pregunta }}</td>
+            <td>
+                <a
+                  href="{% url 'consulta_update' c.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'consulta_delete' c.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+ </table>
+

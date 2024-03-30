@@ -1,0 +1,22 @@
+{% extends "aplicacion/index.html" %}
+
+{% block titulo %}
+    <h1 class="mb-5">Consulta (formulario)</h1>   
+{% endblock titulo %}
+
+{% block contenido %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>   
+        <input type="submit" value="Guardar">
+    </form>    
+
+    {% if pregunta_aleatoria %}
+        <h3>Pregunta Aleatoria:</h3>
+        <p>{{ pregunta_aleatoria.pregunta }}</p>
+        <h3>Respuesta:</h3>
+        <p>{{ pregunta_aleatoria.respuesta }}</p>
+    {% endif %}
+{% endblock contenido %}

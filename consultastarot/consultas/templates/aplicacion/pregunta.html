@@ -1,0 +1,60 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Pensa en tu pregunta!</h1>   
+{% endblock titulo %}
+
+
+{% block contenido %}
+<h2>Aca podes encontrar varias respuestas de diferentes tiradas</h2>
+
+<table>
+    <tr>
+        <td width="200"><h2>Pregunta</h2></td>
+        <td>
+            <a
+            href="{% url 'pregunta_create' %}"
+            <i class="fa-solid fa-square-plus"></i>
+            </a>
+        </td>
+    </tr>
+</table> 
+    
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+            <th>Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for p in pregunta %}    
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.pregunta }}</td>
+            <td>{{ p.respuesta }}</td>
+            <td>
+                <a
+                  href="{% url 'pregunta_update' p.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-regular fa-pen-to-square" title="Edit Record"></i>
+                </a>  
+                <a
+                href="{% url 'pregunta_delete' p.id %}"
+                class="btn btn-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa-solid fa-trash" title="Delete Record"></i>
+                </a>  
+            </td>    
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}
+    
+    

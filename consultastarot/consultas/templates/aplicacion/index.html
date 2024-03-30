@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="El tarot de los gatos" />
+        <meta name="author" content="Micaela Garrido" />
+        <title>El Tarot de los Michis</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <!-- Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
+
+                {% if  user.is_authenticated %}  
+
+                    <a class="navbar-brand" href="{% url 'cliente' %}">Clientes</a>
+                    <a class="navbar-brand" href="{% url 'pregunta'%}">Preguntas</a>
+                    <a class="navbar-brand" href="{% url 'serviciotarot'%}">Servicios Tarot</a>
+                    <a class="navbar-brand" href="{% url 'consulta'%}">Consultas</a>
+                    <p style="color:pink">[{{user.username}}]</p>
+                    <div class="text-center">
+                        <a  href="{% url 'agregar_avatar' %}" ><img src="{{ request.session.avatar }}" height="40px" weight="40px"/></a>
+                    </div>          
+                    <a class="btn btn-success" href="{% url 'perfil' %}">Perfil</a>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>  
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a> 
+                    <a class="btn btn-success" href="{% url 'registrar' %}">Registrarse</a> 
+                {% endif %}                 
+
+               
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    {% block titulo %}
+                    <h1 class="masthead-heading mb-0">EL TAROT DE LOS GATOS</h1>
+                    <h2 class="masthead-subheading mb-0">Busca respuestas al pasado, presentes y futuro! Centrada en el simbolo mas antiguo de la sabiduría: EL GATO</h2>
+                    {% endblock titulo %}
+                </div>
+            </div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+    {% block contenido %}   
+    
+   
+        <!-- Content section 1-->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'assets/img/1.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Servicio gratis...</h2>
+                            <p>Adéntrate en el enigmático mundo del destino con nuestra fascinanted tiradad de Cartas del Tarot. Te invitamos a experimentar la magia y sabiduría de las cartas, todo desde la comodidad de tu hogar. Descubre los misterios que el tarot tiene para revelarte a través de nuestra tirada de cartas, y todo ello de forma gratuita y en línea. Permítete ser guiado por las energías ancestrales mientras exploras las respuestas que el universo tiene reservadas para ti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'assets/img/2.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">La magia de los gatos!</h2>
+                            <p>Los gatos son considerados como seres místicos en varias culturas, ligados a los sueños y la protección de las energías; incluso existe la creencia que mientras deambulan por la casa van liberando los espacios de malas vibras sin que su familia se de cuenta. ¿Cómo no confiar en sus cartas?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'assets/img/3.png'%}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Si los felinos lo dicen...</h2>
+                            <p>Este tarot nos traslada como si fuéramos un felino iluminado y nos da la bienvenida a sus secretos únicos. Los gatos, lindos, misteriosos, traviesos o distantes, parecen vivir en un submundo, un reino de magia y poder.
+                                Acceda a su sabiduría única con esta obra maravillosamente ilustrada, ofreciendo la imaginación tradicional del tarot...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+  
+
+    <!-- Botón "Acerca de mí" -->
+    <div class="container text-center">
+        <a href="{% url 'acerca_de_mi' %}" class="btn btn-primary">Acerca de mí</a>
+    </div>
+
+    {% endblock contenido %}
+
+    <!-- Footer-->
+    <footer class="py-5 bg-black">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white small">Copyright &copy; Micaela Garrido 2024</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
